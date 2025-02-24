@@ -1,4 +1,4 @@
-package com.tienda.entidad;
+package com.store.entities;
 
 import jakarta.persistence.*;
 
@@ -20,6 +20,4 @@ public class Product {
 
     @Column(nullable = false)
     private Double price;
-
-    // Getters y Setters
 }

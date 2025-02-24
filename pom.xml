@@ -6,13 +6,13 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>dark-tower</groupId>
 	<artifactId>solarflow</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>solarflow</name>
-	<description>Database server</description>
+	<description>SolarFlow Server Database</description>
 	<url/>
 	<licenses>
 		<license/>

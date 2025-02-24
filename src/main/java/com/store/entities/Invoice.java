@@ -1,11 +1,13 @@
-package com.tienda.entidad;
+package com.store.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "invoice")
+@Data
 public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +24,6 @@ public class Invoice {
     @Column(nullable = false)
     private Double total;
 
-    @OneToMany(mappedBy = "invoice")
+    @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InvoiceDetail> details;
-
-    // Getters y Setters
 }

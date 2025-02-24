@@ -1,10 +1,12 @@
-package com.tienda.entidad;
+package com.store.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import java.util.List;
 
 @Entity
 @Table(name = "clients")
+@Data
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +21,6 @@ public class Client {
     @Column(unique = true, nullable = false, length = 11)
     private String docnumber;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Invoice> invoices;
-
-    // Getters y Setters
 }
