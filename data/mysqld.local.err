@@ -18,3 +18,7 @@
 2025-02-24T19:17:20.533876Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
 2025-02-24T19:17:20.588006Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
 2025-02-24T19:17:20.588108Z 0 [System] [MY-010931] [Server] C:\Users\pablo\AppData\Local\com.tinyapp.DBngin\Binaries\mysql\8.4.2\bin\mysqld.exe: ready for connections. Version: '8.4.2'  socket: ''  port: 5000  MySQL Community Server - GPL.
+2025-02-24T19:32:03.319980Z 8 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.4.2).
+2025-02-24T19:32:03.321275Z 0 [System] [MY-013105] [Server] C:\Users\pablo\AppData\Local\com.tinyapp.DBngin\Binaries\mysql\8.4.2\bin\mysqld.exe: Normal shutdown.
+2025-02-24T19:32:04.234469Z 0 [System] [MY-010910] [Server] C:\Users\pablo\AppData\Local\com.tinyapp.DBngin\Binaries\mysql\8.4.2\bin\mysqld.exe: Shutdown complete (mysqld 8.4.2)  MySQL Community Server - GPL.
+2025-02-24T19:32:04.235668Z 0 [System] [MY-015016] [Server] MySQL Server - end.
