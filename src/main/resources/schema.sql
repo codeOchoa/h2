@@ -22,11 +22,11 @@ CREATE TABLE invoice (
 );
 
 CREATE TABLE invoice_details (
-    invoice_id INT NOT NULL,
     invoice_detail_id INT AUTO_INCREMENT PRIMARY KEY,
-    amount INT NOT NULL,
+    invoice_id INT NOT NULL,
     product_id INT NOT NULL,
-    price DOUBLE NOT NULL,
+    quantity INT NOT NULL,
+    priceAtPurchase DOUBLE NOT NULL,
     FOREIGN KEY (invoice_id) REFERENCES invoice(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );

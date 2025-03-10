@@ -1,9 +1,0 @@
-[mysqld]
-port=5000
-basedir="C:/Users/pablo/AppData/Local/com.tinyapp.DBngin/Binaries/mysql/8.4.2"
-datadir="C:/Users/pablo/Downloads/Programacion/Repositorios Java/Mis Proyectos/solarflow/data"
-plugin-dir="C:/Users/pablo/AppData/Local/com.tinyapp.DBngin/Binaries/mysql/8.4.2/lib/plugin"
-log-error="C:/Users/pablo/Downloads/Programacion/Repositorios Java/Mis Proyectos/solarflow/data/mysqld.local.err"
-pid-file="C:/Users/pablo/Downloads/Programacion/Repositorios Java/Mis Proyectos/solarflow/data/mysql.pid"
-skip-log-bin
-
