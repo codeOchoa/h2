@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +36,7 @@ public class InvoiceService {
     private InvoiceDetailRepository invoiceDetailRepository;
 
     public String createInvoice(Invoice invoiceRequest) {
-        log.info("Iniciando creación de factura...");
+        log.info("Starting invoice creation...");
 
         // Chk invoiceRequest
         if (invoiceRequest == null || invoiceRequest.getClient() == null) {
@@ -53,6 +54,8 @@ public class InvoiceService {
 
         // Chk product and stock
         double total = 0;
+        List<InvoiceDetail> updatedDetails = new ArrayList<>();
+
         for (InvoiceDetail detail : invoiceRequest.getDetails()) {
             Optional<Product> productOpt = productRepository.findById(detail.getProduct().getId());
 
@@ -73,15 +76,19 @@ public class InvoiceService {
             product.setStock(product.getStock() - detail.getQuantity());
             productRepository.save(product);
 
-            // setPrice
-            detail.setPriceAtPurchase(product.getPrice());
-            detail.setInvoice(invoiceRequest);
+            InvoiceDetail newDetail = new InvoiceDetail();
+            newDetail.setProduct(product);
+            newDetail.setQuantity(detail.getQuantity());
+            newDetail.setPriceAtPurchase(product.getPrice());
+            newDetail.setInvoice(invoiceRequest);
 
-            // Cart
-            total += detail.getPriceAtPurchase() * detail.getQuantity();
+            updatedDetails.add(newDetail);
+
+            total += newDetail.getPriceAtPurchase() * newDetail.getQuantity();
         }
 
         // Date + Total
+        invoiceRequest.setDetails(updatedDetails);
         invoiceRequest.setCreatedAt(new Date());
         invoiceRequest.setTotal(total);
 
@@ -90,7 +97,8 @@ public class InvoiceService {
             invoiceRequest = invoiceRepository.save(invoiceRequest);
 
             // Save detail invoice
-            for (InvoiceDetail detail : invoiceRequest.getDetails()) {
+            for (InvoiceDetail detail : updatedDetails) {
+                detail.setInvoice(invoiceRequest);
                 invoiceDetailRepository.save(detail);
             }
 

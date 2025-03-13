@@ -25,7 +25,6 @@ public class Invoice {
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InvoiceDetail> details;
 
-    // Getters and Setters
     public Integer getId() {
         return id;
     }

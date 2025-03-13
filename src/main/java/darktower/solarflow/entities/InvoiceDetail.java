@@ -1,6 +1,8 @@
 package darktower.solarflow.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "invoice_details")
@@ -19,12 +21,15 @@ public class InvoiceDetail {
     private Product product;
 
     @Column(nullable = false)
+    @NotNull(message = "The amount cannot be zero")
+    @Min(value = 1, message = "You must purchase at least one product")
     private Integer quantity;
 
     @Column(nullable = false)
+    @NotNull(message = "The price cannot be zero")
+    @Min(value = 1, message = "The price must be greater than 0")
     private Double priceAtPurchase;
 
-    // Getters and Setters
     public Integer getId() {
         return id;
     }

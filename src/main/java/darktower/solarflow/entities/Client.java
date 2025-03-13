@@ -1,6 +1,10 @@
 package darktower.solarflow.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 import java.util.List;
 
 @Entity
@@ -11,18 +15,23 @@ public class Client {
     private Integer id;
 
     @Column(nullable = false, length = 75)
+    @NotBlank(message = "The name cannot be empty")
+    @Size(min = 2, max = 75, message = "The name must be between 2 and 75 characters")
     private String name;
 
     @Column(nullable = false, length = 75)
+    @NotBlank(message = "The last name cannot be empty")
+    @Size(min = 2, max = 75, message = "The last name must be between 2 and 75 characters long")
     private String lastname;
 
     @Column(unique = true, nullable = false, length = 11)
+    @NotBlank(message = "The document number cannot be empty")
+    @Pattern(regexp = "\\d{11}", message = "The document number must have 11 digits")
     private String docnumber;
 
     @OneToMany(mappedBy = "client")
     private List<Invoice> invoices;
 
-    // Getters and Setters
     public Integer getId() {
         return id;
     }
